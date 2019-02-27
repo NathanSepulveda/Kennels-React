@@ -90,6 +90,20 @@ export default class ApplicationViews extends Component {
       )
     }
 
+    fireEmployee = id => {
+        return fetch(`http://localhost:5002/employees/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/employees`))
+        .then(e => e.json())
+        .then(employees => this.setState({
+            employees: employees
+        })
+      )
+    }
+
+
 
     render() {
         return (
@@ -98,7 +112,7 @@ export default class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees} />
+                    return <EmployeeList employees={this.state.employees} fireEmployee={this.fireEmployee} />
                 }} />
                 <Route path="/owners" render={(props) => {
                     return <OwnersList owners={this.state.owners} />
