@@ -75,7 +75,19 @@ export default class ApplicationViews extends Component {
                 .then(r => r.json()))
             .then(animals => newState.animals = animals)
             .then(() => this.setState(newState))
-            .then(() => this.setState(newState))
+    }
+
+    deleteAnimal = id => {
+        return fetch(`http://localhost:5002/animals/${id}`, {
+            method: "DELETE"
+        })
+        .then(e => e.json())
+        .then(() => fetch(`http://localhost:5002/animals`))
+        .then(e => e.json())
+        .then(animals => this.setState({
+            animals: animals
+        })
+      )
     }
 
 
@@ -92,7 +104,7 @@ export default class ApplicationViews extends Component {
                     return <OwnersList owners={this.state.owners} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
+                    return <AnimalList animals={this.state.animals} deleteAnimal={this.deleteAnimal} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
                 }} />
             </React.Fragment>
         )
