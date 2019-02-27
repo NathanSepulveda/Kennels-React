@@ -75,7 +75,7 @@
             "phoneNumber": "8675305"
         }
     ],
-    "ownerPetsFromAPI": [
+    "ownerPets": [
         {
             "id": 1,
             "ownerId": 1,
