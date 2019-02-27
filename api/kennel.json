@@ -1,0 +1,115 @@
+{
+    "employees": [
+        {
+            "id": 1,
+            "name": "Jessica Younker"
+        },
+        {
+            "id": 2,
+            "name": "Jordan Nelson"
+        },
+        {
+            "id": 3,
+            "name": "Zoe LeBlanc"
+        },
+        {
+            "id": 4,
+            "name": "Blaise Roberts"
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "name": "Nashville North",
+            "address": "500 Circle Way"
+        },
+        {
+            "id": 2,
+            "name": "Nashville South",
+            "address": "10101 Binary Court"
+        }
+    ],
+    "animals": [
+        {
+            "id": 1,
+            "name": "Buddy"
+        },
+        {
+            "id": 2,
+            "name": "Tucker"
+        },
+        {
+            "id": 3,
+            "name": "Pickle"
+        }
+    ],
+    "owners": [
+        {
+            "id": 1,
+            "name": "Ryan Tanay",
+            "phoneNumber": "8675309"
+        },
+        {
+            "id": 2,
+            "name": "Emma Beaton",
+            "phoneNumber": "8675301"
+        },
+        {
+            "id": 3,
+            "name": "Dani Adkins",
+            "phoneNumber": "8675302"
+        },
+        {
+            "id": 4,
+            "name": "Adam Oswalt",
+            "phoneNumber": "8675303"
+        },
+        {
+            "id": 5,
+            "name": "Fletcher Bangs",
+            "phoneNumber": "8675304"
+        },
+        {
+            "id": 6,
+            "name": "Angela Lee",
+            "phoneNumber": "8675305"
+        }
+    ],
+    "ownerPets": [
+        {
+            "id": 1,
+            "ownerId": 1,
+            "petId": 1
+        },
+        {
+            "id": 2,
+            "ownerId": 2,
+            "petId": 2
+        },
+        {
+            "id": 3,
+            "ownerId": 3,
+            "petId": 3
+        },
+        {
+            "id": 4,
+            "ownerId": 4,
+            "petId": 3
+        },
+        {
+            "id": 5,
+            "ownerId": 5,
+            "petId": 2
+        },
+        {
+            "id": 6,
+            "ownerId": 6,
+            "petId": 1
+        },
+        {
+            "id": 7,
+            "ownerId": 4,
+            "petId": 1
+        }
+    ]
+}
