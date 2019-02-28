@@ -12,7 +12,17 @@ import React, { Component } from 'react'
 //     }
 // }
 
+// let filter = () => {
+//     console.log(this.props.OwnersPets.filter(relat => relat.ownerId === owner.id))
+// }
+
+
+
 class OwnersList extends Component {
+    removeAllRelats = (o) => {
+        this.props.OwnersPets.filter(relat => relat.ownerId === o.id).forEach(relat => {
+            this.props.removeRelat(relat.id) })
+    }
     render() {
         
         return (
@@ -23,13 +33,30 @@ class OwnersList extends Component {
                     <div key={owner.id}>
                         {owner.name} <br />
                         {owner.phoneNumber}
+                        
+                        <a href="#"
+                                    onClick={() => this.props.removeOwner(owner.id).then(() => {
+                                        // removeAllRelats(owner)
 
+                                        this.props.OwnersPets.filter(relat => relat.ownerId === owner.id).forEach(relat => {
+                                            this.props.removeRelat(relat.id)
+                                            console.log("hi")
+                                            // this.props.removeOwner(owner.id)
+                        
+                                        });
+                                        
+                                    })
+                                    }
+                                    className="card-link">Remove Owner</a>
                     </div>
+                    
                 )
             }
             </section>
         )
     }
 }
+
+
 
 export default OwnersList

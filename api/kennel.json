@@ -5,6 +5,10 @@
       "name": "Jessica Younker"
     },
     {
+      "id": 2,
+      "name": "Jordan Nelson"
+    },
+    {
       "id": 3,
       "name": "Zoe LeBlanc"
     },
@@ -52,11 +56,6 @@
       "phoneNumber": "8675302"
     },
     {
-      "id": 4,
-      "name": "Adam Oswalt",
-      "phoneNumber": "8675303"
-    },
-    {
       "id": 5,
       "name": "Fletcher Bangs",
       "phoneNumber": "8675304"
@@ -84,11 +83,6 @@
       "petId": 3
     },
     {
-      "id": 4,
-      "ownerId": 4,
-      "petId": 3
-    },
-    {
       "id": 5,
       "ownerId": 5,
       "petId": 2
@@ -96,11 +90,6 @@
     {
       "id": 6,
       "ownerId": 6,
-      "petId": 1
-    },
-    {
-      "id": 7,
-      "ownerId": 4,
       "petId": 1
     }
   ]

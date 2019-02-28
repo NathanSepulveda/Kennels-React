@@ -54,6 +54,7 @@ export default class AnimalList extends Component {
                                 {animal.name}
                                 <br />
                                 Owner(s): {this.props.OwnersPets.filter(relat => relat.petId === animal.id).map(ao => this.props.owners.find(o => o.id === ao.ownerId).name).join(",   ")}
+                                
                                 <a href="#"
                                     onClick={() => this.props.deleteAnimal(animal.id)}
                                     className="card-link">Delete</a>

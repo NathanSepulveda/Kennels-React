@@ -81,28 +81,53 @@ export default class ApplicationViews extends Component {
         return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
         })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/animals`))
-        .then(e => e.json())
-        .then(animals => this.setState({
-            animals: animals
-        })
-      )
+            .then(e => e.json())
+            .then(() => fetch(`http://localhost:5002/animals`))
+            .then(e => e.json())
+            .then(animals => this.setState({
+                animals: animals
+            })
+            )
     }
 
     fireEmployee = id => {
         return fetch(`http://localhost:5002/employees/${id}`, {
             method: "DELETE"
         })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/employees`))
-        .then(e => e.json())
-        .then(employees => this.setState({
-            employees: employees
+            .then(e => e.json())
+            .then(() => fetch(`http://localhost:5002/employees`))
+            .then(e => e.json())
+            .then(employees => this.setState({
+                employees: employees
+            })
+            )
+    }
+    removeOwner = id => {
+        return fetch(`http://localhost:5002/owners/${id}`, {
+            method: "DELETE"
         })
-      )
+            .then(e => e.json())
+            .then(() => fetch(`http://localhost:5002/owners`))
+            .then(e => e.json())
+            .then(owners => this.setState({
+                owners: owners
+            })
+            )
     }
 
+    removeRelat = id => {
+        return fetch(`http://localhost:5002/ownerPets/${id}`, {
+            method: "DELETE"
+        })
+            .then(e => e.json())
+            .then(() => fetch(`http://localhost:5002/ownerPets`))
+            .then(e => e.json())
+            .then(OP => this.setState({
+                OwnersPets: OP
+            })
+            )
+            
+    }
 
 
     render() {
@@ -115,7 +140,7 @@ export default class ApplicationViews extends Component {
                     return <EmployeeList employees={this.state.employees} fireEmployee={this.fireEmployee} />
                 }} />
                 <Route path="/owners" render={(props) => {
-                    return <OwnersList owners={this.state.owners} />
+                    return <OwnersList owners={this.state.owners} removeOwner={this.removeOwner} OwnersPets={this.state.OwnersPets} removeRelat={this.removeRelat}/>
                 }} />
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList animals={this.state.animals} deleteAnimal={this.deleteAnimal} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
