@@ -53,7 +53,8 @@ export default class AnimalList extends Component {
                                 <img src={dog} className="icon--dog" />
                                 {animal.name}
                                 <br />
-                                Owner(s): {this.props.OwnersPets.filter(relat => relat.petId === animal.id).map(ao => this.props.owners.find(o => o.id === ao.ownerId).name).join(",   ")}
+                                Owner(s): {this.props.OwnersPets.filter(relat => relat.petId === animal.id)
+                                    .map(ao => this.props.owners.find(o => o.id === ao.ownerId).name).join(",   ")}
                                 
                                 <a href="#"
                                     onClick={() => this.props.deleteAnimal(animal.id)}
