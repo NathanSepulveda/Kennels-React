@@ -102,18 +102,35 @@ export default class ApplicationViews extends Component {
             })
             )
     }
-    removeOwner = id => {
-        return fetch(`http://localhost:5002/owners/${id}`, {
-            method: "DELETE"
-        })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/owners`))
-            .then(e => e.json())
-            .then(owners => this.setState({
-                owners: owners
-            })
-            )
-    }
+    // removeOwner = id => {
+    //     return fetch(`http://localhost:5002/owners/${id}`, {
+    //         method: "DELETE"
+    //     })
+    //         .then(e => e.json())
+    //         .then(() => fetch(`http://localhost:5002/owners`))
+    //         .then(e => e.json())
+    //         .then(owners => this.setState({
+    //             owners: owners
+    //         })
+    //         )
+    //         .then(OP => this.setState({
+    //             OwnersPets: OP
+    //         })
+    //         )
+    // }
+
+    removeOwner = (id) => {fetch(`http://localhost:5002/owners/${id}`, {
+        "method": "DELETE"
+    })
+    .then(r => r.json())
+    .then(() => fetch("http://localhost:5002/owners")
+    .then(r => r.json()))
+    .then(owners => this.setState({owners: owners}))
+    .then(()=> fetch ('http://localhost:5002/ownerPets')
+    .then(r => r.json()))
+    .then(OP => this.setState({OwnersPets: OP}) )
+
+    } 
 
     removeRelat = id => {
         return fetch(`http://localhost:5002/ownerPets/${id}`, {

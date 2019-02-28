@@ -35,17 +35,18 @@ class OwnersList extends Component {
                         {owner.phoneNumber}
                         
                         <a href="#"
-                                    onClick={() => this.props.removeOwner(owner.id).then(() => {
-                                        // removeAllRelats(owner)
-
-                                        this.props.OwnersPets.filter(relat => relat.ownerId === owner.id).forEach(relat => {
-                                            this.props.removeRelat(relat.id)
-                                            console.log("hi")
-                                            // this.props.removeOwner(owner.id)
+                                    onClick={() => this.props.removeOwner(owner.id)
+                                    //     .then(() => {
+                                    //     // removeAllRelats(owner)
+                                    //     console.log('hi')
+                                    //     // this.props.OwnersPets.filter(relat => relat.ownerId === owner.id).forEach(relat => {
+                                    //     //     this.props.removeRelat(relat.id)
+                                    //     //     console.log("hi")
+                                    //     //     // this.props.removeOwner(owner.id)
                         
-                                        });
+                                    //     // });
                                         
-                                    })
+                                    // })
                                     }
                                     className="card-link">Remove Owner</a>
                     </div>
