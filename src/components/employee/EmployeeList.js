@@ -12,7 +12,7 @@ class EmployeeList extends Component {
                     <div key={employee.id}>
                         {employee.name}
                         <a href="#"
-                                    onClick={() => this.props.fireEmployee(employee.id)}
+                                    onClick={() => this.props.fireEmployee(employee.id, "employees")}
                                     className="card-link">Fire Employee</a>
                     </div>
                 )

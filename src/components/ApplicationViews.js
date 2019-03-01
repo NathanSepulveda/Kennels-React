@@ -85,28 +85,17 @@ export default class ApplicationViews extends Component {
                     OwnersPets: allRelats
                 })
             }))
-            .then(() => AnimalManager.all("animals").then(allAnimals => {
+            .then(() => AnimalManager.all().then(allAnimals => {
                 this.setState({
                     animals: allAnimals
                 })
             }))
     }
 
-    // deleteAnimal = id => {
-    //     return fetch(`http://localhost:5002/animals/${id}`, {
-    //         method: "DELETE"
-    //     })
-    //         .then(e => e.json())
-    //         .then(() => fetch(`http://localhost:5002/animals`))
-    //         .then(e => e.json())
-    //         .then(animals => this.setState({
-    //             animals: animals
-    //         })
-    //         )
-    // }
 
-    deleteAnimal = (id) => {
-        return AnimalManager.removeAndList(id)
+
+    deleteAnimal = (id, catergory) => {
+        return AnimalManager.delete(id, catergory)
         .then(animals => this.setState({
             animals: animals
           })
@@ -114,41 +103,35 @@ export default class ApplicationViews extends Component {
       }
 
 
-    fireEmployee = (id) => {
-        return EmployeeManager.fireEmployee(id)
+    fireEmployee = (id, catergory) => {
+        return EmployeeManager.delete(id, catergory)
         .then(employees => this.setState({
             employees: employees
         }))
         
     }
 
-    removeOwner = (id) => {
-        fetch(`http://localhost:5002/owners/${id}`, {
-            "method": "DELETE"
-        })
-        .then(r => r.json())
-        .then(() => fetch("http://localhost:5002/owners")
-            .then(r => r.json()))
-        .then(owners => this.setState({ owners: owners }))
+    removeOwner = (id, catergory) => {
+        return OwnerManager.delete(id, "owners")
+        .then(owners => this.setState({
+            owners: owners
+        }))
         .then(() => fetch('http://localhost:5002/ownerPets')
-            .then(r => r.json()))
-        .then(OP => this.setState({ OwnersPets: OP }))
-
+        .then(r => r.json()))
+    .then(OP => this.setState({ OwnersPets: OP }))
+        
     }
 
-    removeRelat = id => {
-        return fetch(`http://localhost:5002/ownerPets/${id}`, {
-            method: "DELETE"
-        })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/ownerPets`))
-            .then(e => e.json())
-            .then(OP => this.setState({
-                OwnersPets: OP
-            })
-            )
 
+
+    removeRelat = (id, catergory) => {
+        return OwnersPets.delete(id, "ownerPets")
+        .then(OwnersPets => this.setState({
+            OwnersPets: OwnersPets
+        }))
+        
     }
+
 
 
     render() {
