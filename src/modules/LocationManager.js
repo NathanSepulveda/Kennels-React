@@ -1,10 +1,15 @@
-const remoteURL = "http://localhost:5002"
+import APIManager from "./APIManager"
 
-export default {
-  get(id) {
-    return fetch(`${remoteURL}/locations/${id}`).then(e => e.json())
-  },
-  getAll() {
-    return fetch(`${remoteURL}/locations`).then(e => e.json())
+// export default {
+//   get(id) {
+//     return fetch(`${remoteURL}/owners/${id}`).then(e => e.json())
+//   },
+//   getAll() {
+//     return fetch(`${remoteURL}/owners`).then(e => e.json())
+//   }
+// }
+
+export default Object.create(APIManager, {
+
   }
-}
+)

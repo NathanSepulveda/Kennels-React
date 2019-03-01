@@ -65,27 +65,27 @@ export default class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
 
-        EmployeeManager.getAll().then(allEmployees => {
+        EmployeeManager.all("employees").then(allEmployees => {
             this.setState({
                 employees: allEmployees
             })
         })
-            .then(() => LocationManager.getAll().then(allLocations => {
+            .then(() => LocationManager.all("locations").then(allLocations => {
                 this.setState({
                     locations: allLocations
                 })
             }))
-            .then(() => OwnerManager.getAll().then(allOwners => {
+            .then(() => OwnerManager.all("owners").then(allOwners => {
                 this.setState({
                     owners: allOwners
                 })
             }))
-            .then(() => OwnersPets.getAll().then(allRelats => {
+            .then(() => OwnersPets.all("ownerPets").then(allRelats => {
                 this.setState({
                     OwnersPets: allRelats
                 })
             }))
-            .then(() => AnimalManager.getAll().then(allAnimals => {
+            .then(() => AnimalManager.all("animals").then(allAnimals => {
                 this.setState({
                     animals: allAnimals
                 })
@@ -113,34 +113,14 @@ export default class ApplicationViews extends Component {
         )
       }
 
-    fireEmployee = id => {
-        return fetch(`http://localhost:5002/employees/${id}`, {
-            method: "DELETE"
-        })
-            .then(e => e.json())
-            .then(() => fetch(`http://localhost:5002/employees`))
-            .then(e => e.json())
-            .then(employees => this.setState({
-                employees: employees
-            })
-            )
+
+    fireEmployee = (id) => {
+        return EmployeeManager.fireEmployee(id)
+        .then(employees => this.setState({
+            employees: employees
+        }))
+        
     }
-    // removeOwner = id => {
-    //     return fetch(`http://localhost:5002/owners/${id}`, {
-    //         method: "DELETE"
-    //     })
-    //         .then(e => e.json())
-    //         .then(() => fetch(`http://localhost:5002/owners`))
-    //         .then(e => e.json())
-    //         .then(owners => this.setState({
-    //             owners: owners
-    //         })
-    //         )
-    //         .then(OP => this.setState({
-    //             OwnersPets: OP
-    //         })
-    //         )
-    // }
 
     removeOwner = (id) => {
         fetch(`http://localhost:5002/owners/${id}`, {

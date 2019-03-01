@@ -56,11 +56,6 @@
       "phoneNumber": "8675302"
     },
     {
-      "id": 5,
-      "name": "Fletcher Bangs",
-      "phoneNumber": "8675304"
-    },
-    {
       "id": 6,
       "name": "Angela Lee",
       "phoneNumber": "8675305"
@@ -81,11 +76,6 @@
       "id": 3,
       "ownerId": 3,
       "petId": 3
-    },
-    {
-      "id": 5,
-      "ownerId": 5,
-      "petId": 2
     },
     {
       "id": 6,
