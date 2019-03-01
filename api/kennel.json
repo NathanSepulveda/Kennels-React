@@ -9,10 +9,6 @@
       "name": "Jordan Nelson"
     },
     {
-      "id": 3,
-      "name": "Zoe LeBlanc"
-    },
-    {
       "id": 4,
       "name": "Blaise Roberts"
     }
@@ -46,16 +42,6 @@
       "phoneNumber": "8675309"
     },
     {
-      "id": 2,
-      "name": "Emma Beaton",
-      "phoneNumber": "8675301"
-    },
-    {
-      "id": 3,
-      "name": "Dani Adkins",
-      "phoneNumber": "8675302"
-    },
-    {
       "id": 6,
       "name": "Angela Lee",
       "phoneNumber": "8675305"
@@ -66,16 +52,6 @@
       "id": 1,
       "ownerId": 1,
       "petId": 1
-    },
-    {
-      "id": 2,
-      "ownerId": 2,
-      "petId": 2
-    },
-    {
-      "id": 3,
-      "ownerId": 3,
-      "petId": 3
     },
     {
       "id": 6,

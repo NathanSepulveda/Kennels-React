@@ -15,5 +15,15 @@ export default Object.create(null, {
         value: function (catergory) {
             return fetch(`${remoteURL}/${catergory}`).then(e => e.json())
         }
+    },
+    delete : {
+        value: function (id, catergory) {
+            return fetch(`http://localhost:5002/${catergory}/${id}`, {
+                method: "DELETE"
+            })
+                .then(e => e.json())
+                .then(() => fetch(`http://localhost:5002/${catergory}`))
+                .then(e => e.json())
+        }
     }
 })

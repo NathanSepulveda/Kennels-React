@@ -12,7 +12,7 @@
 //         method: "DELETE"
 //     }).then(e => e.json()).then(() => { return fetch(`${remoteURL}/animals`).then(e => e.json())})
 //   },
-  
+
 // }
 
 import APIManager from "./APIManager"
@@ -20,15 +20,18 @@ const remoteURL = "http://localhost:5002"
 
 
 export default Object.create(APIManager, {
-
-      removeAndList: {
-        value: function (id) {
-            return fetch(`http://localhost:5002/animals/${id}`, {
-                method: "DELETE"
-            }).then(e => e.json()).then(() => { return fetch(`${remoteURL}/animals`).then(e => e.json())})
-          },
+    get: {
+        value: function () {
+           return APIManager.get("animals")
+        }
+    },
+    all: {
+        value: function () {
+           return APIManager.all("animals")
         }
     }
+
+}
 )
 
 
