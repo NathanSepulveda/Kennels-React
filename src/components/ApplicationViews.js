@@ -51,7 +51,7 @@ import Employee from "../modules/EmployeeManager"
 import EmployeeManager from '../modules/EmployeeManager';
 import OwnerManager from '../modules/OwnerManager';
 import OwnersPets from '../modules/OwnersPets';
-
+import AnimalDetail from './animal/AnimalDetail'
 
 export default class ApplicationViews extends Component {
     state = {
@@ -96,40 +96,40 @@ export default class ApplicationViews extends Component {
 
     deleteAnimal = (id, catergory) => {
         return AnimalManager.delete(id, catergory)
-        .then(animals => this.setState({
-            animals: animals
-          })
-        )
-      }
+            .then(animals => this.setState({
+                animals: animals
+            })
+            )
+    }
 
 
     fireEmployee = (id, catergory) => {
         return EmployeeManager.delete(id, catergory)
-        .then(employees => this.setState({
-            employees: employees
-        }))
-        
+            .then(employees => this.setState({
+                employees: employees
+            }))
+
     }
 
     removeOwner = (id, catergory) => {
         return OwnerManager.delete(id, "owners")
-        .then(owners => this.setState({
-            owners: owners
-        }))
-        .then(() => fetch('http://localhost:5002/ownerPets')
-        .then(r => r.json()))
-    .then(OP => this.setState({ OwnersPets: OP }))
-        
+            .then(owners => this.setState({
+                owners: owners
+            }))
+            .then(() => fetch('http://localhost:5002/ownerPets')
+                .then(r => r.json()))
+            .then(OP => this.setState({ OwnersPets: OP }))
+
     }
 
 
 
     removeRelat = (id, catergory) => {
         return OwnersPets.delete(id, "ownerPets")
-        .then(OwnersPets => this.setState({
-            OwnersPets: OwnersPets
-        }))
-        
+            .then(OwnersPets => this.setState({
+                OwnersPets: OwnersPets
+            }))
+
     }
 
 
@@ -148,6 +148,9 @@ export default class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList animals={this.state.animals} deleteAnimal={this.deleteAnimal} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
+                }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                    return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
             </React.Fragment>
         )
