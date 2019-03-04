@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 // export default class LocationList  extends Component {
 //     render() {
@@ -33,7 +34,7 @@ class OwnersList extends Component {
                     <div key={owner.id}>
                         {owner.name} <br />
                         {owner.phoneNumber}
-                        
+                        <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
                         <a href="#"
                                     onClick={() => this.props.removeOwner(owner.id)
                                     //     .then(() => {
