@@ -21,7 +21,7 @@ export default class OwnerDetail extends Component {
                             {/* <img src={dog} className="icon--dog" /> */}
                             {owner.name}
                         </h4>
-                        <h6 className="card-title">{animal.phoneNumber}</h6>
+                        <h6 className="card-title">{owner.phoneNumber}</h6>
                         <a href="#"
                             onClick={() => this.props.removeOwner(owner.id)
                                             .then(() => this.props.history.push("/owners"))}
