@@ -5,10 +5,6 @@
       "name": "Jessica Younker"
     },
     {
-      "id": 2,
-      "name": "Jordan Nelson"
-    },
-    {
       "id": 4,
       "name": "Blaise Roberts"
     }
@@ -42,6 +38,16 @@
       "id": 1,
       "name": "Ryan Tanay",
       "phoneNumber": "8675309"
+    },
+    {
+      "id": 2,
+      "name": "Bobby Hill",
+      "phoneNumber": "8675309"
+    },
+    {
+      "id": 3,
+      "name": "Hank Hill",
+      "phoneNumber": "8675309"
     }
   ],
   "ownerPets": [
@@ -49,6 +55,11 @@
       "id": 1,
       "ownerId": 1,
       "petId": 3
+    },
+    {
+      "id": 2,
+      "ownerId": 3,
+      "petId": 1
     }
   ]
 }
