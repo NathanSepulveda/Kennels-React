@@ -16,7 +16,7 @@ export default class Login extends Component {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
-        console.log(stateToChange)
+        console.log(this.state)
     }
 
     // Simplistic handler for login submit
