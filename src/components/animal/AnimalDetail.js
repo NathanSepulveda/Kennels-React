@@ -21,6 +21,9 @@ export default class AnimalDetail extends Component {
                             {animal.name}
                         </h4>
                         <h6 className="card-title">{animal.breed}</h6>
+                        
+                        <h6 className="card-title" > Care Taker: {this.props.employees.filter(emp => emp.id === animal.id).map(emp => emp.name)} </h6>
+                                    
                         <a href="#"
                             onClick={() => this.props.deleteAnimal(animal.id)
                                             .then(() => this.props.history.push("/animals"))}

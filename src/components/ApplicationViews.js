@@ -55,6 +55,7 @@ import AnimalDetail from './animal/AnimalDetail'
 import EmployeeDetail from './employee/EmployeeDetail'
 import OwnerDetail from './owners/OwnerDetail'
 import Login from './authentication/Login'
+import AnimalForm from './animal/AnimalForm';
 
 export default class ApplicationViews extends Component {
     state = {
@@ -105,6 +106,15 @@ export default class ApplicationViews extends Component {
             })
             )
     }
+
+    addAnimal = animal =>
+        AnimalManager.post(animal)
+            .then(() => AnimalManager.all())
+            .then(animals =>
+                this.setState({
+                    animals: animals
+                })
+            );
 
 
     fireEmployee = (id, catergory) => {
@@ -163,21 +173,27 @@ export default class ApplicationViews extends Component {
                         return <Redirect to="/login" />
                     }
                 }} />
+
                 <Route exact path="/animals" render={(props) => {
                     if (this.isAuthenticated()) {
-                        return <AnimalList animals={this.state.animals} deleteAnimal={this.deleteAnimal} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
+                        return <AnimalList {...props} animals={this.state.animals} deleteAnimal={this.deleteAnimal} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
                     } else {
                         return <Redirect to="/login" />
                     }
                 }} />
-                <Route path="/animals/:animalId(\d+)" render={(props) => {
-                    return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                <Route path="/animals/new" render={(props) => {
+                    return <AnimalForm {...props}
+                        addAnimal={this.addAnimal}
+                        employees={this.state.employees} />
                 }} />
                 <Route path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} fireEmployee={this.fireEmployee} employees={this.state.employees} />
                 }} />
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                     return <OwnerDetail {...props} owners={this.state.owners} removeOwner={this.removeOwner} OwnersPets={this.state.OwnersPets} removeRelat={this.removeRelat} />
+                }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                    return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} employees={this.state.employees}/>
                 }} />
                 <Route path="/login" component={Login} />
             </React.Fragment>
