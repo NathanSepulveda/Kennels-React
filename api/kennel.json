@@ -31,6 +31,17 @@
       "id": 1,
       "name": "Buddy",
       "breed": "Chihuha"
+    },
+    {
+      "name": "Buddy",
+      "breed": "asasd",
+      "id": 4
+    },
+    {
+      "name": "Spot",
+      "breed": "Dalmatian",
+      "employeeId": 1,
+      "id": 5
     }
   ],
   "owners": [

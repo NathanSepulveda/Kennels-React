@@ -29,9 +29,23 @@ export default Object.create(APIManager, {
         value: function () {
            return APIManager.all("animals")
         }
+    },
+
+    post: {
+        value: function (newAnimal) {
+            return fetch(`${remoteURL}/animals`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(newAnimal)
+            }).then(data => data.json())
+          }
+
+        }
     }
 
-}
+
 )
 
 
