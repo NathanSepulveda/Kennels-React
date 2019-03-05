@@ -1,43 +1,4 @@
-// import { Route } from 'react-router-dom'
-// import React, { Component } from "react"
-// import AnimalList from './animal/AnimalList'
-// import LocationList from './location/LocationList'
-// import EmployeeList from './employee/EmployeeList'
-// import OwnersList from './owners/OwnersList'
 
-
-// class ApplicationViews extends Component {
-
-
-
-
-//     state = {
-//         locations: [],
-//         animals: [],
-//         employees: [],
-//         owners: [],
-//         OwnersPets: []
-//     }
-
-//     render() {
-//         return (
-//             <React.Fragment>
-//                 <Route exact path="/" render={(props) => {
-//                     return <LocationList locations={this.state.locations} />
-//                 }} />
-//                 <Route path="/animals" render={(props) => {
-//                     return <AnimalList animals={this.state.animals} owners={this.state.owners} OwnersPets={this.state.OwnersPets} />
-//                 }} />
-//                 <Route path="/employees" render={(props) => {
-//                     return <EmployeeList employees={this.state.employees} />
-//                 }} />
-//                 <Route path="/owners" render={(props) => {
-//                     return <OwnersList owners={this.state.owners} />
-//                 }} />
-//             </React.Fragment>
-//         )
-//     }
-// }
 import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
@@ -70,30 +31,23 @@ export default class ApplicationViews extends Component {
         const newState = {}
 
         EmployeeManager.all("employees").then(allEmployees => {
-            this.setState({
-                employees: allEmployees
-            })
+            newState.employees = allEmployees
         })
             .then(() => LocationManager.all("locations").then(allLocations => {
-                this.setState({
-                    locations: allLocations
-                })
+                newState.locations = allLocations
             }))
             .then(() => OwnerManager.all("owners").then(allOwners => {
-                this.setState({
-                    owners: allOwners
-                })
+                newState.owners = allOwners
             }))
             .then(() => OwnersPets.all("ownerPets").then(allRelats => {
-                this.setState({
-                    OwnersPets: allRelats
-                })
+                newState.OwnersPets = allRelats
             }))
             .then(() => AnimalManager.all().then(allAnimals => {
-                this.setState({
-                    animals: allAnimals
-                })
+                newState.animals = allAnimals
             }))
+            .then(() => {
+                this.setState(newState)
+            })
     }
 
 
@@ -161,7 +115,10 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
                         return <EmployeeList deleteEmployee={this.deleteEmployee}
-                            employees={this.state.employees} />
+                        animals={this.state.animals}
+                        employees={this.state.employees}
+                        OwnersPets={this.state.OwnersPets}
+                        {...props} />
                     } else {
                         return <Redirect to="/login" />
                     }
